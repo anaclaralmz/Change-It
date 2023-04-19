@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <title>Voluntários</title>
+    <link rel="shortcut icon" href="reuso/logo.ico" type="image/x-icon">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
+
+    <div id="reusohead">
+
+    </div>
+    <!-- reuso -->
+
+</head>
+
+<body>
+    <header>
+        <!-- Início código NavBar -->
+        <div id="reusonavbar">
+
+        </div>
+
+        <!-- Fim da NavBar -->
+        <!-- Início do código do início do site -->
+
+        <!-- Código que indica a Volta para a página inicial do Acesso Restrito -->
+
+        <div class="container-fluid">
+            <a href="AcessoRestrito.html">
+                <i style="font-size: 36px;" class="bi bi-arrow-left-circle-fill"></i>
+            </a>
+        </div>
+
+        <!-- Código do Modal para o adicionar voluntarios -->
+
+        <!--aqui ele é definido como invisível e só será visível quando a função ser chamada-->
+        <div class="modal fade" id="modalAddvoluntario" tabindex="-1" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <!-- header com botão de fechar (um xizinho) -->
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Adicionar voluntario</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+
+                        <!-- formulário para adicionar um voluntario -->
+                        <iframe name="iframe" id="iframe" style="display:none;"></iframe>
+                        <form action="/registrarVoluntario" method="POST" target="iframe">
+
+                            <div class="container row-aling-itens-start formulario">
+                                <div class="input-group mb-3">
+                                    <label>Nome Completo
+                                        <input type="text" class="form-control" placeholder="Nome" aria-label="Username"
+                                            aria-describedby="basic-addon1" id="name" name="username">
+                                    </label>
+                                </div>
+
+                                <div class="input-group mb-3">
+                                    <label>Idade:
+                                        <input type="text" class="form-control" placeholder="Idade"
+                                            aria-label="Username" aria-describedby="basic-addon1" id="idade"
+                                            name="idade">
+                                    </label>
+                                </div>
+
+                                <div class="input-group mb-3">
+                                    <label>Documento (RG/CPF):
+                                        <input type="text" class="form-control" placeholder="RG/CPF"
+                                            aria-label="Username" aria-describedby="basic-addon1" id="documento"
+                                            name="documento">
+                                    </label>
+                                </div>
+
+                                <div>
+                                    <label>Como você poderia nos ajudar?
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="motivo" id="ajudar"
+                                                value="Servir lanche para os atendidos" checked>
+                                            <label class="form-check-label">
+                                                Servir lanche para os atendidos
+                                            </label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="motivo" id="ajudar"
+                                                value="judar na limpeza do espaço">
+                                            <label class="form-check-label">
+                                                Ajudar na limpeza do espaço
+                                            </label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="motivo" id="ajudar"
+                                                value="Ajudar na organização do Projeto">
+                                            <label class="form-check-label">
+                                                Ajudar na organização do Projeto
+                                            </label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="motivo" id="ajudar"
+                                                value="Realização de oficinas">
+                                            <label class="form-check-label">
+                                                Realização de oficinas
+                                            </label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="motivo" id="ajudar"
+                                                value="Abordagem social de rua">
+                                            <label class="form-check-label">
+                                                Abordagem social de rua
+                                            </label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="motivo" id="ajudar"
+                                                value="Ajudar em eventos pontuais">
+                                            <label class="form-check-label">
+                                                Ajudar em eventos pontuais
+                                            </label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="motivo" id="ajudar"
+                                                value="Bazar de doações">
+                                            <label class="form-check-label">
+                                                Bazar de doações
+                                            </label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="motivo" id="ajudar"
+                                                value="Atividades de rotina">
+                                            <label class="form-check-label">
+                                                Atividades de rotina
+                                            </label>
+                                        </div>
+                                    </label>
+                                </div>
+                                <br>
+
+                                <div class="input-group mb-3">
+                                    <label>Insira seu email:
+                                        <input type="text" class="form-control" placeholder="Email"
+                                            aria-label="Username" aria-describedby="basic-addon1" id="email"
+                                            name="email">
+                                    </label>
+                                </div>
+
+                                <div class="observacao">
+                                    <fieldset>
+                                        <div class="input-group">
+                                            <span class="input-group-text">Detalhes da participação(Opcional)</span>
+                                            <textarea class="form-control" aria-label="With textarea" name="obs"
+                                                placeholder="Ex: Tempo disponível, Possuo roupas para doação..."></textarea>
+                                        </div>
+                                        <br>
+
+                                    </fieldset>
+                                </div>
+                                <div class="col-auto">
+                                    <button id="registroVoluntarios" type="submit" class="btn btn-primary bnt"
+                                        data-bs-dismiss="modal" onclick="list20()">Enviar</button>
+                                </div>
+                            </div>
+                            <br>
+                        </form>
+
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="snackbar">Registro enviado com sucesso!</div>
+
+        <!-- Fim do código do modal para o cadastro de voluntarios -->
+
+        <!-- Código para a página com a lista de voluntarios -->
+
+        <div class="container-fluid">
+            <div class="col-12 col-md-10 my-4 mx-auto justify-content-center align-items-center d-flex p-2 flex-column">
+                <div class="mb-2 d-flex flex-row justify-content-evenly col-12 col-md-6 col-lg-4">
+                    <p class="arvo fs-2 text-center my-2 col-10"> Voluntários </p>
+                </div>
+
+                <div class="col-12 col-md-6">
+                    <div class="col-12 d-flex justify-content-around">
+                        <div class="col-5">
+                            <div class="input-group mb-3">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div>
+                        <center><button id="addac" type="submit"
+                                class="col-md-6 border col-sm-11 mx-auto form-control my-2 btn btn-dark mt-2"
+                                data-bs-toggle="modal" data-bs-target="#modalAddvoluntario">
+                                Adicionar voluntario
+                            </button></center>
+
+                        <!-- Search box -->
+                        <div class="input-group row col-md-6 offset-3">
+                            <input type="search" class="form-control rounded" placeholder="Procurar..."
+                                aria-label="Search" aria-describedby="search-addon" oninput="searchFilter()"
+                                id="searchFilter" />
+                        </div>
+                    </div>
+
+                    <div class="m-2 col-12 col-md-11 mx-auto fs-3 d-flex align-items-center justify-content-center">
+                        <table class="table col-12" id="myTable">
+                            <thead>
+                                <tr>
+                                    <th class="fs-6"> id </th>
+                                    <th class="fs-6">Nome</th>
+                                    <th class="fs-6">Idade</th>
+                                    <th class="fs-6">Documento</th>
+                                    <th class="fs-6">Email</th>
+                                    <th class="fs-6"></th>
+                                    <th class="fs-6">Ações</th>
+                                    <th class="fs-6"></th>
+                                </tr>
+                            </thead>
+
+                            <tbody id="main" class="listaLinhas">
+
+                            </tbody>
+
+                        </table>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Fim do código html e css da lista do site -->
+    </header>
+
+    <!-- reuso do footer -->
+    <div id="reusofooter">
+
+    </div>
+    <!-- script para o reuso -->
+    <script>
+        $(document).ready(function () {
+            $("#reusohead").load("reuso/head.html");
+            $("#reusonavbar").load("reuso/navbar.html");
+            $("#reusofooter").load("reuso/footer.html");
+        })
+    </script>
+
+
+    <script>
+        $("#registroVoluntarios").on("click", function () {
+            var x = document.getElementById("snackbar");
+
+            x.className = "show";
+            setTimeout(function () { x.className = x.className.replace("show", ""); }, 3000);
+
+        });
+
+    </script>
+
+    <!-- script para o funcionameto das listas e da integração via AJAX -->
+    <script>
+        // quando a página é carregada, as tuplas da tabela "tbCadastramento" são carregadas na div "resultado"
+        $(document).ready(() => {
+            voluntarios.list();
+        });
+
+        function list20() {
+            setTimeout(function () { voluntarios.list() }, 400)
+
+        }
+
+        // objeto que faz o get
+        var voluntarios = {
+
+            list() {
+                $.ajax({
+                    url: 'http://127.0.0.1:1234/readVoluntario',
+                    type: 'GET',
+                    success: data => {
+                        var tr = '';
+                        data.forEach(element => {
+                            tr += `<tr>`;
+                            tr += `<th scope="row"> ${element.idVoluntario} </th>`;
+                            tr += `<th scope="row"> ${element.Nome} </th>`;
+                            tr += `<td scope="row"> ${element.Idade} </td>`
+                            tr += `<td scope="row"> ${element.Documento} </td>`
+                            tr += `<td scope="row"> ${element.Email} </td>`
+                            tr += `<td style="background-color: red; color: white" scope="row" onclick="voluntario.delete('${element.idVoluntario}')"> Excluir </td>`
+                            tr += `<td style="background-color: green; color: white" scope="row" data-bs-toggle="modal" data-bs-target="#myModal${element.idVoluntario}" onclick="voluntarios.list2('${element.idCadastro}')"> Visualizar </td>`
+                            tr += `<td style="background-color: blue; color: white" scope="row" onclick="voluntario.update('${element.idVoluntario}')"> Atualizar </td>`
+                            tr += `</tr>`
+                        });
+                        $('#main').html(tr);
+                    }
+                });
+            },
+
+
+            list2(id) {
+                $.ajax({
+                    url: 'http://127.0.0.1:1234/readVoluntario ',
+                    type: 'GET',
+                    success: data => {
+                        console.log("entrei no success");
+                        data.forEach(element => {
+                            const modal = document.createElement("div");
+                            modal.innerHTML = `<div id="myModal${id}" class="modal fade" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true"> <div class="modal-dialog vis"> <div class="modal-content">
+                                 <div class="modal-header"> <h5 class="modal-title"> ${element.Nome}; id: ${element.idVoluntario}</h5> <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> </div> 
+                                 <div class="modal-body"> <div class="row"> 
+                                    <div class="col-sm-6"> <h3> Identificação </h3> 
+                                        <label> Nome completo: ${element.Nome} </label> <br /> 
+                                        <label> Idade: ${element.Idade} </label> <br /> 
+                                        <label> Documento: ${element.Documento} </label> <br /> 
+                                        <label> Documento: ${element.Email} </label> <br /> 
+                                    <div class="col-sm-6"> <h3> Locais </h3> 
+                                        <h5> Motivações </h5>
+                                        <label>  Predios privados ou públicos? ${element.Motivo} </label> <br />
+                                        <label>  Marquis ou viaduto? ${element.VObservacoes} </label> <br />
+
+                                        </div>
+                                       </div></div> <div class="modal-foorter"> 
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" aria-label="Close"> Fechar Visualização </button></div> </div></div></div>`;
+
+                            if (element.idVoluntario == id) {
+                                document.body.appendChild(modal);
+                                $('#myModal' + id).modal();
+                            }
+
+                        });
+                        // $('#stefano').html(dive);
+                    }
+                });
+            }
+
+        };
+        // objeto que faz as outras ações
+        var voluntario = {
+
+            delete(idVoluntario) {
+
+                if (confirm(`Confirma a exclusão?`)) {
+                    $.ajax({
+                        type: 'POST',
+                        url: 'http://127.0.0.1:1234/deleteVoluntario',
+                        data: { idVoluntario: idVoluntario },
+                    }).done(function () {
+                        voluntarios.list();
+                    }).fail(function (msg) {
+                        console.log('FAIL');
+                    });
+                }
+            }
+
+        };
+
+
+        function searchFilter() {
+            var input, filter, table, tr, td, i, txtValue;
+            input = document.getElementById("searchFilter");
+            filter = input.value.toUpperCase();
+            table = document.getElementById("myTable");
+            tr = table.getElementsByTagName("tr");
+            for (i = 0; i < tr.length; i++) {
+                td = tr[i].getElementsByTagName("td")[0];
+                if (td) {
+                    txtValue = td.textContent || td.innerText;
+                    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                        tr[i].style.display = "";
+                    } else {
+                        tr[i].style.display = "none";
+                    }
+                }
+            }
+        }
+    </script>
+
+
+</body>
+
+</html>

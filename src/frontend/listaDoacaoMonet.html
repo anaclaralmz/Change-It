@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <title>Doações Monetárias</title>
+    <link rel="shortcut icon" href="reuso/logo.ico" type="image/x-icon">
+    <div id="reusohead">
+
+    </div>
+    <!-- reuso -->
+    <script src="https://code.jquery.com/jquery-3.3.1.js"
+        integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous">
+        </script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
+</head>
+
+<body>
+    <header>
+        <!-- Início código NavBar -->
+        <div id="reusonavbar">
+
+        </div>
+
+        <!-- Fim da NavBar -->
+        <!-- Código do Modal para o adicionar doação monetária -->
+
+        <!--aqui ele é definido como invisível e só será visível quando a função ser chamada-->
+        <div class="modal fade" id="modalAddMonetario" tabindex="-1" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <!-- header com botão de fechar (um xizinho) -->
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Adicionar Doação Monetária</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+
+                        <!-- formulário para adicionar um Doação Monetária -->
+                        <iframe name="iframe" id="iframe" style="display:none;"></iframe>
+                        <form action="/insertMonetario" method="POST" target="iframe">
+
+                            <div class="container row-aling-itens-start formulario">
+                                <div class="input-group mb-3">
+                                    <label>Nome Completo
+                                        <input type="text" class="form-control" placeholder="Nome" aria-label="Username"
+                                            aria-describedby="basic-addon1" id="name" name="Nome">
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div class="container row-aling-itens-start formulario">
+                                <div class="input-group mb-3">
+                                    <label>Valor doado:
+                                        <input type="text" class="form-control" placeholder="Valor"
+                                            aria-label="Username" aria-describedby="basic-addon1" id="name"
+                                            name="Valor">
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div class="input-group mb-3">
+                                <label>Data da transferência:
+                                    <input type="date" name="Data" class="form-control" placeholder="D/M/A"
+                                        aria-label="Username" aria-describedby="basic-addon1">
+                                </label>
+
+                            </div>
+
+                            <div>
+                                <label> Você deseja permanecer anônimo nesta doação?
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="Anonimo" id="ajudar"
+                                            value="Sim" checked>
+                                        <label class="form-check-label">
+                                            Sim
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="Anonimo" id="ajudar"
+                                            value="Nao">
+                                        <label class="form-check-label">
+                                            Não
+                                        </label>
+                                    </div>
+                                </label>
+                            </div>
+                            <br>
+
+                            <div class="observacao">
+                                <fieldset>
+                                    <h5 class="input-group-text">Alguma outra observação ou forma de
+                                        contato?</h5>
+                                    <div class="input-group">
+                                        <textarea class="form-control" aria-label="With textarea" name="Observacoes"
+                                            placeholder="Observação: email, telefone, contrato..."></textarea>
+                                    </div>
+                                    <br>
+
+                                </fieldset>
+                            </div>
+                            <div class="col-auto">
+                                <button id="registroMonetario" type="submit" class="btn btn-primary bnt"
+                                    data-bs-dismiss="modal">Enviar</button>
+                                <div id="snackbar">Registro enviado com sucesso!</div>
+                            </div>
+                        </form>
+                    </div>
+                    <br>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Fim do código do modal para o cadastro de Doação Monetária -->
+
+        <div id="snackbar">Registro enviado com sucesso!</div>
+
+
+        <!-- Início do código do início do site -->
+
+        <h1 style="text-align:center"> Controle de Doações Monetárias </h1>
+        <br>
+
+        <!-- Código que indica a Volta para a página inicial do Acesso Restrito -->
+
+        <div class="container-fluid">
+            <a href="AcessoRestrito.html">
+                <i style="font-size: 36px;" class="bi bi-arrow-left-circle-fill"></i>
+            </a>
+        </div>
+
+        <!-- Modal -->
+
+
+    </header>
+    <div class="container-fluid">
+        <div class="col-12 col-md-10 my-4 mx-auto justify-content-center align-items-center d-flex p-2 flex-column">
+            <div class="mb-2 d-flex flex-row justify-content-evenly col-12 col-md-6 col-lg-4">
+                <p class="arvo fs-2 text-center my-2 col-10"> Doações Monetárias </p>
+            </div>
+
+            <div class="col-12 col-md-6">
+                <div class="col-12 d-flex justify-content-around">
+                    <div class="col-5">
+                        <div class="input-group mb-3">
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <center>
+                        <button id="addac" type="submit"
+                            class="col-md-6 border col-sm-11 mx-auto form-control my-2 btn btn-dark mt-2"
+                            data-bs-toggle="modal" data-bs-target="#modalAddMonetario">
+                            Adicionar Doações </button>
+                    </center>
+
+                    <!-- Search box -->
+                    <div class="input-group row col-md-6 offset-3">
+                        <input type="search" class="form-control rounded" placeholder="Procurar..." aria-label="Search"
+                            aria-describedby="search-addon" oninput="searchFilter()" id="searchFilter" />
+                    </div>
+                </div>
+
+                <div class="m-2 col-12 col-md-11 mx-auto fs-3 d-flex align-items-center justify-content-center">
+                    <table class="table col-12" id="myTable">
+                        <thead>
+                            <tr>
+                                <th class="fs-6"> ID </th>
+                                <th class="fs-6"> Nome Completo </th>
+                                <th class="fs-6">Valor</th>
+                                <th class="fs-6">Data</th>
+                                <th class="fs-6">Ações</th>
+                            </tr>
+                        </thead>
+
+                        <tbody id="main" class="listaLinhas">
+
+                        </tbody>
+
+                    </table>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+
+
+    <!-- Fim do código do início do site -->
+
+    <div id="reusofooter">
+
+    </div>
+
+    <script>
+        $("#registroMonetario").on("click", function () {
+            var x = document.getElementById("snackbar");
+
+            x.className = "show";
+            setTimeout(function () { x.className = x.className.replace("show", ""); }, 3000);
+
+        });
+
+    </script>
+
+    <script>
+        $(document).ready(function () {
+            $("#reusohead").load("reuso/head.html");
+            $("#reusonavbar").load("reuso/navbar.html");
+            $("#reusofooter").load("reuso/footer.html");
+        })
+
+        // quando a página é carregada, as tuplas da tabela "tbCadastramento" são carregadas na div "resultado"
+        $(document).ready(() => {
+            doacoesMon.list();
+        });
+
+        function list20() {
+            setTimeout(function(){
+                doacoesMon.list
+            }, 400);
+
+        }
+
+        // objeto que faz o get
+        var doacoesMon = {
+
+            list() {
+                $.ajax({
+                    url: 'http://127.0.0.1:1234/readMonetario',
+                    type: 'GET',
+                    success: data => {
+                        var tr = '';
+                        data.forEach(element => {
+                            tr += `<tr>`;
+                            tr += `<th scope="row"> ${element.idMonetario} </th>`;
+                            tr += `<th scope="row"> ${element.Nome} </th>`;
+                            tr += `<td scope="row"> ${element.Valor} </td>`
+                            tr += `<td scope="row"> ${element.Data} </td>`
+                            tr += `<td style="background-color: red; color: white" scope="row" onclick="doacaoMon.delete('${element.idMonetario}')"> Excluir </td>`
+                            tr += `<td style="background-color: green; color: white" scope="row" data-bs-toggle="modal" data-bs-target="#myModal${element.idMonetario}" onclick="doacoesMon.list2('${element.idMonetario}')"> Visualizar </td>`
+                            tr += `</tr>`
+                        });
+                        $('#main').html(tr);
+                    }
+                });
+            },
+
+
+            list2(id) {
+                $.ajax({
+                    url: 'http://127.0.0.1:1234/readMonetario',
+                    type: 'GET',
+                    success: data => {
+                        console.log("entrei no success");
+                        data.forEach(element => {
+                            console.log("entrei no forEach do elemento" + id);
+                            const modal = document.createElement("div");
+                            modal.innerHTML = `<div id="myModal${id}" class="modal fade" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true"> <div class="modal-dialog vis"> <div class="modal-content">
+                                 <div class="modal-header"> <h5 class="modal-title"> ${element.Nome}; id: ${element.idMonetario}</h5> <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> </div> 
+                                 <div class="modal-body"> <div class="row"> 
+                                    <div class="col-sm-4"> <h3> Identificação </h3> 
+                                        <label> Nome completo: ${element.Nome} </label> <br /> 
+                                        <label> Data do Pagamento: ${element.Data} </label> <br /> 
+                                        <label> Valor: ${element.Valor} </label> <br /> 
+                                     </div> 
+                                    <div class="col-sm-4">
+
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" aria-label="Close"> Fechar Visualização </button></div> </div></div></div>`;
+
+                            if (element.idCadastro == id) {
+                                document.body.appendChild(modal);
+                                $('#myModal' + id).modal();
+                            }
+
+                        });
+                        // $('#stefano').html(dive);
+                    }
+                });
+            }
+
+        };
+        // objeto que faz as outras ações
+        var doacaoMon = {
+
+            delete(idMonetario) {
+
+                if (confirm(`Confirma a exclusão?`)) {
+                    $.ajax({
+                        type: 'POST',
+                        url: 'http://127.0.0.1:1234/deleteMonetario',
+                        data: { idMonetario: idMonetario },
+                    }).done(function () {
+                        doacoesMon.list();
+                    }).fail(function (msg) {
+                        console.log('FAIL');
+                    });
+                }
+            }
+
+        };
+
+
+        function searchFilter() {
+            var input, filter, table, tr, td, i, txtValue;
+            input = document.getElementById("searchFilter");
+            filter = input.value.toUpperCase();
+            table = document.getElementById("myTable");
+            tr = table.getElementsByTagName("tr");
+            for (i = 0; i < tr.length; i++) {
+                td = tr[i].getElementsByTagName("td")[0];
+                if (td) {
+                    txtValue = td.textContent || td.innerText;
+                    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                        tr[i].style.display = "";
+                    } else {
+                        tr[i].style.display = "none";
+                    }
+                }
+            }
+        }
+    </script>
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <div id="reusohead"></div>
+    <title>ficha Voluntário</title>
+    <link rel="shortcut icon" href="reuso/logo.ico" type="image/x-icon">
+    <script src="https://code.jquery.com/jquery-3.3.1.js"
+        integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous">
+        </script>
+</head>
+
+<body>
+    <header>
+        <!-- Início código NavBar -->
+        <div id="reusonavbar">
+
+        </div>
+    </header>
+
+    <h1 style="text-align: center;">Ficha para se voluntariar</h1>
+
+    <div>
+        <!-- Início do formulário para se voluntariar  -->
+                        <iframe name="iframe" id="iframe" style="display:none;"></iframe>
+                        <form action="/registrarVoluntario" method="POST" target="iframe">
+
+            <div class="container row-aling-itens-start formulario">
+                <div class="input-group mb-3">
+                    <label>Nome Completo
+                        <input type="text" class="form-control" placeholder="Nome" aria-label="Username"
+                            aria-describedby="basic-addon1" id="name" name="username">
+                    </label>
+                </div>
+
+                <div class="input-group mb-3">
+                    <label>Idade:
+                        <input type="text" class="form-control" placeholder="Idade" aria-label="Username"
+                            aria-describedby="basic-addon1" id="idade" name="idade">
+                    </label>
+                </div>
+
+                <div class="input-group mb-3">
+                    <label>Documento (RG/CPF):
+                        <input type="text" class="form-control" placeholder="RG/CPF" aria-label="Username"
+                            aria-describedby="basic-addon1" id="documento" name="documento">
+                    </label>
+                </div>
+
+                <div>
+                    <label>Como você poderia nos ajudar?
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="gridRadios" id="ajudar"
+                                value="Servir lanche para os atendidos" checked>
+                            <label class="form-check-label">
+                                Servir lanche para os atendidos
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="gridRadios" id="ajudar"
+                                value="Ajudar na limpeza do espaço">
+                            <label class="form-check-label">
+                                Ajudar na limpeza do espaço
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="gridRadios" id="ajudar"
+                                value="Ajudar na organização do Projeto">
+                            <label class="form-check-label">
+                                Ajudar na organização do Projeto
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="gridRadios" id="ajudar"
+                                value="Realização de oficinas">
+                            <label class="form-check-label">
+                                Realização de oficinas
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="gridRadios" id="ajudar"
+                                value="Abordagem social de rua">
+                            <label class="form-check-label">
+                                Abordagem social de rua
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="gridRadios" id="ajudar"
+                                value="Ajudar em eventos pontuais">
+                            <label class="form-check-label">
+                                Ajudar em eventos pontuais
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="gridRadios" id="ajudar"
+                                value="Bazar de doações">
+                            <label class="form-check-label">
+                                Bazar de doações
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="gridRadios" id="ajudar"
+                                value="Atividades de rotina">
+                            <label class="form-check-label">
+                                Atividades de rotina
+                            </label>
+                        </div>
+                    </label>
+                </div>
+                <br>
+
+                <div class="input-group mb-3">
+                    <label>Insira seu email:
+                        <input type="text" class="form-control" placeholder="Email" aria-label="Username"
+                            aria-describedby="basic-addon1" id="email" name="email">
+                    </label>
+                </div>
+
+                <div class="observacao">
+                    <fieldset>
+                        <div class="input-group">
+                            <span class="input-group-text">Detalhes da participação(Opcional)</span>
+                            <textarea class="form-control" aria-label="With textarea"
+                                placeholder="Ex: Tempo disponível, Possuo roupas para doação..." name="obs"></textarea>
+                        </div>
+                        <br>
+
+                    </fieldset>
+                </div>
+                <div class="col-auto">
+                    <button id="registroVoluntario1" type="submit" class="btn btn-primary bnt">Enviar</button>
+                        <div id="snackbar">Registro enviado com sucesso!</div>
+                </div>
+                <!-- Fim do formulário para se voluntariar  -->
+            </div>
+            <br>
+        </form>
+
+        <!-- inicio código footer (rodapé) -->
+        <div id="reusofooter">
+        </div>
+
+        <script>
+
+            $("#registroVoluntario1").on("click", function () {
+                var x = document.getElementById("snackbar");
+
+                x.className = "show";
+                setTimeout(function () { x.className = x.className.replace("show", ""); }, 3000);
+            });
+
+        </script>
+
+        <script>
+            $(document).ready(function () {
+                $("#reusonavbar").load("reuso/navbar.html");
+                $("#reusofooter").load("reuso/footer.html");
+                $("#reusohead").load("reuso/head.html");
+            });
+        </script>
+</body>
+
+</html>

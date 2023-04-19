@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <title>Serviços</title>
+  <link rel="shortcut icon" href="reuso/logo.ico" type="image/x-icon">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
+  <div id="reusohead">
+  </div>
+
+</head>
+
+<body>
+  <header>
+    <!-- Início código NavBar -->
+    <div id="reusonavbar">
+
+    </div>
+    <!-- Fim da NavBar -->
+
+    <!-- Código dos Modais para o adicionar Serviços -->
+    <!-- Este é o modal para adição de banhos -->
+    <div class="modal fade" id="ModalAddBanho" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Adicionar Banho</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <iframe name="iframe" id="iframe" style="display:none;"></iframe>
+          <form action="/insertServico" method="POST" target="iframe">
+            <div class="modal-body">
+
+              <div class="container col-12 align-items-center mb-2">
+
+                <label>Toalha utilizada:</label>
+                <select name="idToalha" id="mainBanho" class="col-md-5 col-sm-12 mx-auto w-100 form-select my-2"
+                  required>
+                </select>
+
+                <br />
+
+                <label>Quem tomou o banho:</label>
+                <select name="idCadastro" id="mainAssistido" class="col-md-5 col-sm-12 mx-auto w-100 form-select my-2"
+                  required>
+                </select>
+
+                <br />
+
+                <label>Data do banho:</label>
+                <input type="date" class="col-md-5 col-sm-12 mx-auto w-100 form-select my-2 form-control"
+                  aria-label="Username" name="Data" aria-describedby="basic-addon1">
+              </div>
+
+              <input type="hidden" name="servico" value="Banho">
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+              <div class="col-auto">
+                <button id="registroServicos" style="background-color: blue;" type="submit" class="btn btn-primary bnt"
+                  data-bs-dismiss="modal" onclick="list20()">Enviar</button>
+              </div>
+            </div>
+          </form>
+
+        </div>
+      </div>
+    </div>
+    <div id="snackbar">Registro enviado com sucesso!</div>
+
+    <!-- Este é o modal para adição de lanches -->
+    <div class="modal fade" id="ModalAddLanche" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Adicionar Lanche</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <iframe name="iframe" id="iframe" style="display:none;"></iframe>
+          <form action="/insertServico" method="POST" target="iframe">
+            <div class="modal-body">
+
+              <div class="container col-12 align-items-center mb-2">
+
+                <label>Lanche:</label>
+                <input type="text" name="Lanche" value="HotDog" style="width: 100%;">
+
+                <br />
+
+                <label>Quem recebeu o lanche:</label>
+                <select name="idCadastro" id="mainAssistido2" class="col-md-5 col-sm-12 mx-auto w-100 form-select my-2"
+                  required>
+                </select>
+
+                <br />
+
+                <label>Data de entrega do lanche:</label>
+                <input type="date" class="col-md-5 col-sm-12 mx-auto w-100 form-select my-2 form-control"
+                  aria-label="Username" name="Data" aria-describedby="basic-addon1">
+              </div>
+
+              <input type="hidden" name="servico" value="Lanche">
+
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+              <div class="col-auto">
+                <button id="registroServicos" style="background-color: blue;" type="submit" class="btn btn-primary bnt"
+                  data-bs-dismiss="modal" onclick="list20()">Enviar</button>
+              </div>
+            </div>
+          </form>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- Fim dos códigos dos modais para o cadastro de Servicos -->
+
+    <!-- Início do código do início do site -->
+
+    <!-- Código que indica a Volta para a página inicial do Acesso Restrito -->
+    <a href="AcessoRestrito.html">
+      <i style="font-size: 36px;" class="bi bi-arrow-left-circle-fill"></i>
+    </a>
+
+    <h1 style="text-align:center">Controle de Serviços</h1>
+    <br>
+
+    <div class="container-fluid">
+
+      <div class="col-12 col-md-10 my-4 mx-auto justify-content-center align-items-center d-flex p-2 flex-column">
+        <!-- Search Box!! (procura direto no id do assistido) -->
+        <div class="input-group row col-md-6">
+          <input type="search" class="form-control rounded" placeholder="Procurar pelo id do assistido..."
+            aria-label="Search" aria-describedby="search-addon" oninput="searchFilter()" id="searchFilter" />
+        </div>
+
+        <br />
+        <div class="row">
+          <div class="col-md-6">
+            <button id="addac" type="submit" class="botaoquero"
+              style="background-color:#FEEF10; border-radius: 30px;border:none; font-size: 22px; width: 109%;"
+              data-bs-toggle="modal" data-bs-target="#ModalAddBanho">
+              Adicionar Banho
+            </button>
+          </div>
+          <div class="col-md-6">
+            <button id="addac" type="submit" class="botaoquero"
+              style="background-color:#FEEF10; border-radius: 30px;border:none; font-size: 22px; width: 110%;"
+              data-bs-toggle="modal" data-bs-target="#ModalAddLanche">
+              Adicionar Lanche
+            </button>
+          </div>
+        </div>
+
+        <br>
+
+        <div class="m-2 col-12 col-md-11 mx-auto fs-6 d-flex align-items-center justify-content-center">
+          <table class="table col-10" id="myTable">
+            <thead>
+              <tr>
+                <th class="fs-6" onclick="servicos.list('idServico')">#</th>
+                <th class="fs-6" onclick="servicos.list('Servico')">Serviço</th>
+                <th class="fs-6" onclick="servicos.list('idCadastro')">idAssistido</th>
+                <th class="fs-6" onclick="servicos.list('Toalha')">Toalha</th>
+                <th class="fs-6" onclick="servicos.list('Lanche')">Lanche</th>
+                <th class="fs-6" onclick="servicos.list('Data')">Data</th>
+                <th class="fs-6">Ação</th>
+              </tr>
+            </thead>
+
+            <tbody id="main">
+
+            </tbody>
+          </table>
+        </div>
+
+      </div>
+    </div>
+    <br>
+
+    <!-- Fim do código do início do site -->
+
+
+    <div id="reusofooter">
+
+    </div>
+
+    <!-- Script para o toast do botão enviar -->
+    <script>
+      $("#registroServicos").on("click", function () {
+        var x = document.getElementById("snackbar");
+
+        x.className = "show";
+        setTimeout(function () { x.className = x.className.replace("show", ""); }, 3000);
+
+      });
+
+    </script>
+  </header>
+
+  <!-- script para o reuso -->
+  <script>
+    $(document).ready(function () {
+      $("#reusohead").load("reuso/head.html");
+      $("#reusonavbar").load("reuso/navbar.html");
+      $("#reusofooter").load("reuso/footer.html");
+    })
+  </script>
+
+  <!-- script para o ajax (integração) -->
+  <script>
+    $(document).ready(() => {
+      servicos.list('Data');
+      servicos.list2();
+    });
+
+    function list20() {
+      setTimeout(function () { servicos.list('Data') }, 500)
+    }
+    //método GET para puxar informações da tabela no banco de dados 
+    var servicos = {
+
+      list(ordem) {
+        // ajax que cria a tabela de serviços
+        $.ajax({
+          url: 'http://127.0.0.1:1234/readServico',
+          type: 'GET',
+          data: { ordem: ordem },
+          success: data => {
+            var tr = '';
+            data.forEach(element => {
+              tr += `<tr>`;
+              tr += `<th scope="row"> ${element.idServico} </th>`;
+              tr += `<th scope="row"> ${element.Servico} </th>`;
+              tr += `<td scope="row"> #${element.idCadastro}<button onclick="assistidos.list2(${element.idCadastro})" style="background-color: green; color: white; border-radius:20px; border:none;" data-bs-toggle="modal" data-bs-target="#myModal${element.idCadastro}" style="background-color: green; color: white"> Visualizar </button> </th>`;
+              tr += `<td scope="row"> ${element.Toalha} </td>`;
+              tr += `<td scope="row"> ${element.Lanche} </td>`;
+              tr += `<td scope="row"> ${element.Data} </td>`;
+              tr += `<td scope="row"><button style="background-color: red; color: white; border-radius:20px; border:none;" class="botaoquero" onclick="servico.delete('${element.idServico}')"> Excluir </button> </td>`
+              tr += `</tr>`;
+            });
+            $('#main').html(tr);
+          }
+        });
+
+      },
+
+      list2() {
+        // ajax que cria as toalhas no dropdown do modal do adicionar banho
+        $.ajax({
+          url: 'http://127.0.0.1:1234/readToalha',
+          type: 'GET',
+          success: data => {
+            var modalBanho = '';
+            data.forEach(element => {
+              modalBanho += `<option value="${element.idToalha}" name="idToalha">Toalha ${element.idToalha}</option>`;
+            });
+            $('#mainBanho').append(modalBanho);
+          }
+        });
+
+        // ajax que cria os assistidos no dropdown do modal do adicionar banho e no adicionar lanche
+        $.ajax({
+          url: 'http://127.0.0.1:1234/readCadastroAssistido',
+          type: 'GET',
+          success: data => {
+            var modalAssistido = '';
+            data.forEach(element => {
+              modalAssistido += `<option value="${element.idCadastro}" name="idCadastro"> ${element.nome_completo} #${element.idCadastro} </option>`;
+            });
+            $('#mainAssistido').append(modalAssistido); // adiciona no dropdown do modal do banho
+            $('#mainAssistido2').append(modalAssistido); // adiciona no dropdown do modal do lacnhe
+          }
+        });
+
+      }
+
+    };
+
+
+    //método para deletar as informações dos servicos no banco de dados 
+    var servico = {
+
+      delete(idServico) {
+
+        if (confirm(`Confirma a exclusão?`)) {
+          $.ajax({
+            type: 'POST',
+            url: 'http://127.0.0.1:1234/deleteServico',
+            data: { idServico: idServico },
+          }).done(function () {
+            servicos.list('Data');
+          }).fail(function (msg) {
+            console.log('FAIL');
+          });
+        }
+      }
+
+    };
+
+    var assistidos = {
+
+      list2(id) {
+        $.ajax({
+          url: 'http://127.0.0.1:1234/readCadastroAssistido',
+          type: 'GET',
+          success: data => {
+            data.forEach(element => {
+              const modal = document.createElement("div");
+              modal.innerHTML = `<div id="myModal${id}" class="modal fade" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true"> <div class="modal-dialog vis"> <div class="modal-content"> <div class="modal-header"> <h5 class="modal-title"> ${element.nome_completo}; id: ${element.idCadastro}</h5> <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> </div> <div class="modal-body"> <div class="row"> <div class="col-sm-4"> <h3> Identificação </h3> <label> Nome completo: ${element.nome_completo} </label> <br /> <label> Nome social: ${element.clamado} </label> <br /> <label> Documento: ${element.possui_documentos} </label> <br /> <label> Data de Nascimento: ${element.nascimento} </label> <br /> </div> <div class="col-sm-4"> <h3> Locais </h3> <h5> Endereços </h5> <label>  Marquis ou viaduto? ${element.marquises_viadutos} </label> <br /> <label>  Predios privados ou públicos? ${element.predios_pri_pub} </label> <br /> <label>  Parques ou praças? ${element.parques} </label> <br /> <label>  Estações de trem ou rodoviária? ${element.estacao} </label> <br /> <label>  Rodovia? ${element.rodovias} </label> <br /> <label>  Área interna ocupável? ${element.areas_internas} </label> <br /><label>  Galeria subterrânea? ${element.galerias} </label> <br /> <label>  Lugar abandonado? ${element.lugares_abandonados} </label> <br /> <label>  Outro local? ${element.outros_locais} </label> <br /> <label>  Albergue, abrigo ou casa de passagem? ${element.albergue} </label> <br /> <label>  Domicílio particular? ${element.domiciliar_particular} </label> <br /> <h5> Número de dias na semana em cada lugar: </h5> <label>  Rua: ${element.dias_rua} </label> <br /> <label>  Albergue: ${element.dias_albergue} </label> <br /> <label>  Domicílio particular: ${element.dias_particular} </label> <br /> <label>  Outro: ${element.dias_outro} </label> <br />  <h5> Tempos </h5> <label>  Tempo de Rua: ${element.tempo_de_rua} </label> <br /> <label>  Tempo em São Paulo: ${element.quanto_tempo_mora_na_cidade} </label> <br /> <h5> Motivações </h5> <label> Não sei como será isso socorro  </label> <br /> </div> <div class="col-sm-4"> <h3> Tratamento </h3> <h5> Encaminhamento para <strong> ${element.encam_ser_1} </strong> </h5> <h5> dia ${element.encam_dt_1} </h5> <br /> <h5> Encaminhamento para <strong> ${element.encam_ser_2} </strong> </h5> <h5> dia ${element.encam_dt_2} </h5> <br /> <h5> Encaminhamento para <strong> ${element.encam_ser_3} </strong> </h5> <h5> dia ${element.encam_dt_3} </h5> <br /> <h5> Encaminhamento para <strong> ${element.encam_ser_4} </strong> </h5> <h5> dia ${element.encam_dt_4} </h5> <br /> <h5> Encaminhamento para <strong> ${element.encam_ser_5} </strong> </h5> <h5> dia ${element.encam_dt_5} </h5> <br /> </div> </div></div> <div class="modal-foorter"> <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" aria-label="Close"> Fechar Visualização </button></div> </div></div></div>`;
+
+              if (element.idCadastro == id) {
+                document.body.appendChild(modal);
+                $('#myModal' + id).modal();
+              }
+
+            });
+            // $('#stefano').html(dive);
+          }
+        });
+      }
+
+    };
+
+    //método para filtrar as informações dos servicos no banco de dados (filtro de pesquisa)
+    input = document.getElementById("searchFilter"); // serach box
+    filter = input.value.toUpperCase(); //
+    table = document.getElementById("myTable"); // tabela
+    tr = table.getElementsByTagName("tr"); // linha
+    for (i = 0; i < tr.length; i++) { // pra cada elemento na linha
+      td = tr[i].getElementsByTagName("td")[0]; // a coluna em negrito é pego
+      if (td) { //
+        txtValue = td.textContent || td.innerText; //
+        if (txtValue.toUpperCase().indexOf(filter) > -1) { //
+          tr[i].style.display = ""; // 
+        } else { // 
+          tr[i].style.display = "none"; // 
+        }
+      }
+    }
+  </script>
+</body>
+
+</html>

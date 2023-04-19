@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+
+<head>
+
+  <title>Revirar</title>
+  <link rel="shortcut icon" href="reuso/logo.ico" type="image/x-icon">
+  <div id="reusohead">
+
+  </div>
+
+  <!-- Estilo próprio -->
+  <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+    crossorigin="anonymous">
+    </script>
+</head>
+
+<body>
+  <!-- Menu -->
+  <header>
+    <div id="reusonavbar"></div>
+    <!-- Início código do corpo do site-->
+    <div>
+      <center>
+        <h1>Administração</h1>
+      </center>
+    </div>
+  </header>
+
+  <div class="container-fluid text-center">
+    <div class="numbers d-flex flex-md-row flex-wrap justify-content-center">
+
+      <div class="rect col-12 col-sm-8 col-md-8 col-lg-6 col-xl-2">
+        <a class="linkdecoration" href="fichaCadastro.html">
+          <div><img src="img/Ícones/addicon.png">
+            <h5 style="font-size: 25px;">Novo Cadastro</h5>
+          </div>
+        </a>
+      </div>
+      <div class="rect col-12 col-sm-8 col-md-8 col-lg-6 col-xl-2">
+        <a class="linkdecoration" href="listaAssistidos.html">
+          <div><img src="img/Ícones/family.png">
+            <h5 style="font-size: 25px;">Controle de assistidos</h5>
+          </div>
+        </a>
+      </div>
+      <div class="rect col-12 col-sm-8 col-md-8 col-lg-6 col-xl-2">
+        <a class="linkdecoration" href="listaDoacoes.html">
+          <div><img src="img/Ícones/Ícone food.png" style="width:85%; height:85%">
+            <h5 style="font-size: 25px;">Controle de insumos</h5>
+          </div>
+        </a>
+      </div>
+
+      <div style="background-color: lightgray;" class="rect col-12 col-sm-8 col-md-8 col-lg-6 col-xl-2">
+        <!-- <a href="listaRelatórios.html"> -->
+        <div><img src="img/Ícones/Ícone oficinas.png" style="width:50%; height:50%">
+          <h5 style="font-size: 25px;">Relatórios dos educadores</h5>
+        </div>
+        <!-- </a> -->
+      </div>
+
+      <div class="rect col-12 col-sm-8 col-md-8 col-lg-6 col-xl-2">
+        <a class="linkdecoration" href="listaAtividades.html">
+          <div><img src="img/Ícones/iconeBanho.png" style="width:50%; height:50%">
+            <h5 style="font-size: 25px;">Controle de Atividades</h5>
+          </div>
+        </a>
+      </div>
+    </div>
+
+    <div class="container-fluid text-center">
+      <div class="numbers d-flex flex-md-row flex-wrap justify-content-center">
+        <div class="rect col-12 col-sm-8 col-md-8 col-lg-6 col-xl-2">
+          <a class="linkdecoration" href="listaVoluntários.html">
+            <div><img src="img/Ícones/iconeEventos.png" style="width:50%; height:50%">
+              <h5 style="font-size: 25px;">Controle de voluntários</h5>
+            </div>
+          </a>
+        </div>
+
+        <div style="background-color:lightgray ;" class="rect col-12 col-sm-8 col-md-8 col-lg-6 col-xl-2">
+          <!-- <a class="linkdecoration" href=""> -->
+          <div><img src="img/Ícones/iconadm.png">
+            <h5 style="font-size: 25px;">Atualizar campanhas</h5>
+          </div>
+          </a>
+        </div>
+
+        <div class="rect col-12 col-sm-8 col-md-8 col-lg-6 col-xl-2">
+          <a class="linkdecoration" href="listaColaboradores.html">
+            <!--   -> lista -->
+            <div><img src="img/Ícones/oficinas32-removebg-preview.png" style="width:50%; height:50%">
+              <h5 style="font-size: 25px;">Controle de colaboradores</h5>
+            </div>
+          </a>
+        </div>
+        <div class="rect col-12 col-sm-8 col-md-8 col-lg-6 col-xl-2">
+          <a class="linkdecoration" href="listaDoacaoMonet.html">
+            <div><img src="img/Ícones/dinheiro.png" style="width:40%; height:40%">
+              <h5 style="font-size: 25px;">Controle de doações monetárias</h5>
+            </div>
+          </a>
+        </div>
+        <div class="rect col-12 col-sm-8 col-md-8 col-lg-6 col-xl-2">
+          <a class="linkdecoration" href="Home.html">
+            <div>
+              <h5 style="font-size: 28px;">Voltar para Página Inicial</h5>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+</body>
+
+<!-- Footer -->
+<div id="reusofooter">
+
+</div>
+<script>
+  $(document).ready(function () {
+    $("#reusonavbar").load("reuso/navbar.html");
+    $("#reusofooter").load("reuso/footer.html");
+    $("#reusohead").load("reuso/head.html");
+  });
+</script>
+</body>
+
+</html>

@@ -1,0 +1,962 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <title>Assistidos</title>
+    <link rel="shortcut icon" href="reuso/logo.ico" type="image/x-icon">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
+
+    <div id="reusohead">
+
+    </div>
+    <!-- reuso -->
+
+</head>
+
+<body>
+    <header>
+        <!-- Início código NavBar -->
+        <div id="reusonavbar">
+
+        </div>
+
+        <!-- Fim da NavBar -->
+        <!-- Início do código do início do site -->
+
+        <!-- Código do Modal para o adicionar assistidos -->
+
+        <!--aqui ele é definido como invisível e só será visível quando a função ser chamada-->
+        <div class="modal fade" id="modalAddAssistido" tabindex="-1" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <!-- header com botão de fechar (um xizinho) -->
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Adicionar Assistido</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+
+                        <!-- formulário para adicionar um assistido -->
+                        <iframe name="iframe" id="iframe" style="display:none;"></iframe>
+                        <form action="/cadastro" method="POST" target="iframe">
+
+                            <div class="container row-aling-itens-start formulario">
+
+                                <h2 style="text-align: center;">Identificação de Pessoas</h2>
+                                <div class="input-group mb-3">
+                                    <label>Data da Abordagem:
+                                        <input type="date" name="data" class="form-control" placeholder="D/M/A"
+                                            aria-label="Username" aria-describedby="basic-addon1">
+                                    </label>
+
+                                </div>
+
+                                <div class="input-group mb-3">
+                                    <label>Nome Completo:
+                                        <input type="text" name="NomeCA" class="form-control" placeholder="Nome"
+                                            aria-label="Username" aria-describedby="basic-addon1">
+                                    </label>
+
+                                </div>
+                                <div class="input-group mb-3">
+                                    <label>Como gosta de ser chamado/como é conhecido:
+                                        <input type="text" name="NomeSocialCA" class="form-control" placeholder="Nome"
+                                            aria-label="Username" aria-describedby="basic-addon1">
+                                    </label>
+
+                                </div>
+
+                                <div class="input-group mb-3">
+                                    <label>Documento (RG/CPF):
+                                        <input type="number" name="DocumentoCA" class="form-control"
+                                            placeholder="RG/CPF" aria-label="Username" aria-describedby="basic-addon1"
+                                            maxlength="11">
+                                    </label>
+                                </div>
+
+                                <div class="input-group mb-3">
+                                    <label>Data de Nasc:
+                                        <input type="date" name="NascCA" class="form-control" placeholder="Idade"
+                                            aria-label="Username" aria-describedby="basic-addon1">
+                                    </label>
+                                </div>
+
+                                <div class="observacao">
+                                    <div class="input-group">
+                                        <span class="input-group-text">Observações</span>
+                                        <input type="text" name="observacao" id="observacao" style="width: 100%;">
+                                    </div>
+                                    <br>
+                                </div>
+
+                                <h2 style="text-align: center;">Locais</h2>
+
+                                <div class="input-group mb-3">
+                                    <label>Marquises e viadutos
+                                        <input type="text" name="marquises" class="form-control" placeholder="Exemplo"
+                                            aria-label="Username" aria-describedby="basic-addon1">
+                                    </label>
+                                </div>
+
+                                <div class="input-group mb-3">
+                                    <label>Frente de prédios privados e públicos
+                                        <input type="text" name="Predios" class="form-control" placeholder="Exemplo"
+                                            aria-label="Username" aria-describedby="basic-addon1">
+                                    </label>
+                                </div>
+
+                                <div class="input-group mb-3">
+                                    <label>Parques, praças
+                                        <input type="text" name="Parques" class="form-control" placeholder="Exemplo"
+                                            aria-label="Username" aria-describedby="basic-addon1">
+                                    </label>
+                                </div>
+
+                                <div class="input-group mb-3">
+                                    <label>Estações de trem, rodoviárias
+                                        <input type="text" name="Estacoes" class="form-control" placeholder="Exemplo"
+                                            aria-label="Username" aria-describedby="basic-addon1">
+                                    </label>
+                                </div>
+
+                                <div class="input-group mb-3">
+                                    <label>Margem de rodovias
+                                        <input type="text" name="Rodovias" class="form-control" placeholder="Exemplo"
+                                            aria-label="Username" aria-describedby="basic-addon1">
+                                    </label>
+                                </div>
+
+                                <div class="input-group mb-3">
+                                    <label>Dentro de construções com áreas internas ocupáveis
+                                        <input type="text" name="Construcoes" class="form-control" placeholder="Exemplo"
+                                            aria-label="Username" aria-describedby="basic-addon1">
+                                    </label>
+                                </div>
+
+                                <div class="input-group mb-3">
+                                    <label>Galerias subterrâneas
+                                        <input type="text" name="Galerias" class="form-control" placeholder="Exemplo"
+                                            aria-label="Username" aria-describedby="basic-addon1">
+                                    </label>
+                                </div>
+
+                                <div class="input-group mb-3">
+                                    <label>Casas e prédios abandonados
+                                        <input type="text" name="abandonados" class="form-control" placeholder="Exemplo"
+                                            aria-label="Username" aria-describedby="basic-addon1">
+                                    </label>
+                                </div>
+
+                                <div class="input-group mb-3">
+                                    <label>Outros locais
+                                        <input type="text" name="Locais" class="form-control" placeholder="Exemplo"
+                                            aria-label="Username" aria-describedby="basic-addon1">
+                                    </label>
+                                </div>
+
+                                <div class="input-group mb-3">
+                                    <label>Albergue Abrigo ou Casa de Passagem para pessoas em situação de rua:
+                                        <input type="text" name="moradia_Albergue" class="form-control"
+                                            placeholder="Exemplo" aria-label="Username" aria-describedby="basic-addon1">
+                                    </label>
+                                </div>
+
+                                <div class="input-group mb-3">
+                                    <label>Domicílio particular: nesse quesito, considere como locais utilizados
+                                        temporariamente pelo
+                                        entrevistado para pernoitar, os quais pertencem a outras pessoas:
+                                        <input type="text" name="domicilio_Particular" class="form-control"
+                                            placeholder="Exemplo" aria-label="Username" aria-describedby="basic-addon1">
+                                    </label>
+                                </div>
+                                <div>
+                                    <label>
+                                        <h6>Número de dias na semana que a pessoa em situação de rua costuma utilizar os
+                                            espaços
+                                            listados:
+                                        </h6>
+                                        <br>
+                                        <div class="form-check form-check-inline">
+                                            <label class="form-check-label" for="inlineRadio1">Rua</label>
+                                            <input type="text" class="form-control"
+                                                placeholder="Quantas vezes na semana" aria-label="Username"
+                                                aria-describedby="basic-addon1" name="rua">
+                                        </div>
+                                        <br>
+                                        <div class="form-check form-check-inline">
+                                            <label class="form-check-label" for="inlineRadio2">Albergue</label>
+                                            <input type="text" class="form-control"
+                                                placeholder="Quantas vezes na semana" aria-label="Username"
+                                                aria-describedby="basic-addon1" name="alb">
+                                        </div>
+                                        <br>
+                                        <div class="form-check form-check-inline">
+                                            <label class="form-check-label" for="inlineRadio2">Domicilio
+                                                particular</label>
+                                            <input type="text" class="form-control"
+                                                placeholder="Quantas vezes na semana" aria-label="Username"
+                                                aria-describedby="basic-addon1" name="domi">
+                                        </div>
+                                        <br>
+                                        <div class="form-check form-check-inline">
+                                            <label class="form-check-label" for="inlineRadio2">Outro</label>
+                                            <input type="text" class="form-control"
+                                                placeholder="Quantas vezes na semana" aria-label="Username"
+                                                aria-describedby="basic-addon1" name="out">
+                                        </div>
+                                    </label>
+                                </div>
+                                <br>
+                                <br>
+                                <label>
+                                    <h6>Há quanto tempo vive na rua?</h6>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="tempo_rua"
+                                            id="exampleRadios2" value="Até seis meses">
+                                        <label class="form-check-label">
+                                            Até seis meses
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="tempo_rua"
+                                            id="exampleRadios2" value="Entre seis meses e um ano">
+                                        <label class="form-check-label">
+                                            Entre seis meses e um ano
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="tempo_rua"
+                                            id="exampleRadios2" value="Entre um e dois anos">
+                                        <label class="form-check-label">
+                                            Entre um e dois anos
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="tempo_rua"
+                                            id="exampleRadios2" value="Entre cinco e dez anos">
+                                        <label class="form-check-label">
+                                            Entre cinco e dez anos
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="tempo_rua"
+                                            id="exampleRadios2" value="Entre cinco e dez anos">
+                                        <label class="form-check-label">
+                                            Entre cinco e dez anos
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="tempo_rua"
+                                            id="exampleRadios2" value="Mais de dez anos">
+                                        <label class="form-check-label">
+                                            Mais de dez anos
+                                        </label>
+                                    </div>
+                                </label>
+                                <br>
+                                <br>
+
+                                <div>
+                                    <label>
+                                        <h6>Quais os principais motivos pelos quais passou a morar na
+                                            rua/albergue/outro?</h6>
+                                        <div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="motivos"
+                                                    id="exampleRadios1" value="Perdeu a moradia">
+                                                <label class="form-check-label">
+                                                    Perdeu a moradia
+                                                </label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="motivos"
+                                                    id="exampleRadios2" value="Problemas com familiares">
+                                                <label class="form-check-label">
+                                                    Problemas com familiares
+                                                </label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="motivos"
+                                                    id="exampleRadios1" value="Ameaça/ violência">
+                                                <label class="form-check-label">
+                                                    Ameaça/ violência
+                                                </label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="motivos"
+                                                    id="exampleRadios2" value="Desemprego">
+                                                <label class="form-check-label">
+                                                    Desemprego
+                                                </label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="motivos"
+                                                    id="exampleRadios1" value="Alcoolismo/ droga">
+                                                <label class="form-check-label">
+                                                    Alcoolismo/ droga
+                                                </label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="motivos"
+                                                    id="exampleRadios2" value="Preferência/opção própria">
+                                                <label class="form-check-label">
+                                                    Preferência/opção própria
+                                                </label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="motivos"
+                                                    id="exampleRadios1" value="Tratamento de saúde">
+                                                <label class="form-check-label">
+                                                    Tratamento de saúde
+                                                </label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="motivos"
+                                                    id="exampleRadios2" value="Não sabe/Não se lembra">
+                                                <label class="form-check-label">
+                                                    Não sabe/Não se lembra
+                                                </label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="motivos"
+                                                    id="exampleRadios2" value="outros">
+                                                <label class="form-check-label">
+                                                    Outros
+                                                </label>
+                                            </div>
+                                        </div>
+                                </div>
+                                </label>
+                                <br>
+
+                                <label>
+                                    <h6>Há quanto tempo mora nesta cidade?</h6>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="tempo_m" id="exampleRadios2"
+                                            value="Até seis meses">
+                                        <label class="form-check-label">
+                                            Até seis meses
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="tempo_m" id="exampleRadios2"
+                                            value="Entre seis meses e um ano">
+                                        <label class="form-check-label">
+                                            Entre seis meses e um ano
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="tempo_m" id="exampleRadios2"
+                                            value="Entre um e dois anos">
+                                        <label class="form-check-label">
+                                            Entre um e dois anos
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="tempo_m" id="exampleRadios2"
+                                            value="Entre cinco e dez anos">
+                                        <label class="form-check-label">
+                                            Entre cinco e dez anos
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="tempo_m" id="exampleRadios2"
+                                            value="Entre cinco e dez anos">
+                                        <label class="form-check-label">
+                                            Entre cinco e dez anos
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="tempo_m" id="exampleRadios2"
+                                            value="Mais de dez anos">
+                                        <label class="form-check-label">
+                                            Mais de dez anos
+                                        </label>
+                                    </div>
+                                </label>
+
+                                <label>
+                                    <h6>Vive com sua família na rua?</h6>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="f" id="exampleRadios1"
+                                            value="Sim" checked>
+                                        <label class="form-check-label" for="exampleRadios1">
+                                            Sim
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="f" id="exampleRadios2"
+                                            value="Não">
+                                        <label class="form-check-label" for="exampleRadios2">
+                                            Não
+                                        </label>
+                                    </div>
+                                </label>
+                                <br>
+                                <br>
+                                <label>
+                                    <h6>Tem contato com parente que vive fora da rua?</h6>
+
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="contato_parente_fr"
+                                            value="Todo dia">
+                                        <label class="form-check-label" for="inlineRadio1">Todo dia</label>
+                                    </div>
+                                    <br>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="contato_parente_fr"
+                                            value="Toda semana">
+                                        <label class="form-check-label" for="inlineRadio2">Toda semana</label>
+                                    </div>
+                                    <br>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="contato_parente_fr"
+                                            value="Todo mês">
+                                        <label class="form-check-label" for="inlineRadio2">Todo mês</label>
+                                    </div>
+                                    <br>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="contato_parente_fr"
+                                            value="Todo ano">
+                                        <label class="form-check-label" for="inlineRadio2">Todo ano</label>
+                                    </div>
+                                    <br>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="contato_parente_fr"
+                                            value="Quase nunca">
+                                        <label class="form-check-label" for="inlineRadio2">Quase Nunca</label>
+                                    </div>
+                                    <br>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="contato_parente_fr"
+                                            value="Nunca">
+                                        <label class="form-check-label" for="inlineRadio2">Nunca</label>
+                                    </div>
+
+                                </label>
+                                <br>
+                                <label>
+                                    <h6>Nos últimos seis meses frequentou ou participou de alguma atividade comunitária?
+                                    </h6>
+
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="atv_comu" value="Escola">
+                                        <label class="form-check-label">Escola</label>
+                                    </div>
+                                    <br>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="atv_comu"
+                                            value="Movimento social">
+                                        <label class="form-check-label">Movimento social</label>
+                                    </div>
+                                    <br>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="atv_comu" value="Associação">
+                                        <label class="form-check-label">Associação</label>
+                                    </div>
+                                    <br>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="atv_comu"
+                                            value="Cooperativa">
+                                        <label class="form-check-label">Cooperativa</label>
+                                    </div>
+                                    <br>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="atv_comu"
+                                            value="Não sabe/Não lembra">
+                                        <label class="form-check-label">Não sabe/não lembra</label>
+                                    </div>
+                                    <br>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="atv_comu"
+                                            value="Não respondeu">
+                                        <label class="form-check-label">Não respondeu</label>
+                                    </div>
+                                    <br>
+                                </label>
+                                <br>
+                                <br>
+                                <label>
+                                    <h6>Nos últimos seis meses foi atendido em algum dos lugares abaixo?</h6>
+
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="ult_atendimento" value="Centro de Referência de Assistência Social
+                                            (CRAS)">
+                                        <label class="form-check-label">Centro de Referência de Assistência Social
+                                            (CRAS)</label>
+                                    </div>
+                                    <br>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="ult_atendimento" value="Centro de Referência Especializado da
+                                            Assistência Social (CREAS)">
+                                        <label class="form-check-label">Centro de Referência Especializado da
+                                            Assistência Social (CREAS)</label>
+                                    </div>
+                                    <br>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="ult_atendimento" value="Centro de referência para população em
+                                            situação de rua">
+                                        <label class="form-check-label">Centro de referência para população em
+                                            situação de rua</label>
+                                    </div>
+                                    <br>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="ult_atendimento" value=">Instituição de acolhimento (albergue/
+                                            abrigo/outro)">
+                                        <label class="form-check-label">Instituição de acolhimento (albergue/
+                                            abrigo/outro)</label>
+                                    </div>
+                                    <br>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="ult_atendimento"
+                                            value="Hospital/clínica geral">
+                                        <label class="form-check-label">Hospital/clínica geral</label>
+                                    </div>
+                                    <br>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="ult_atendimento"
+                                            value="Nenhum">
+                                        <label class="form-check-label">Nenhum</label>
+                                    </div>
+                                    <br>
+                                </label>
+                                <br>
+                                <br>
+                                <label>
+                                    <h6>Alguma vez teve emprego com carteira de trabalho assinada?</h6>
+
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="carteira" value="Sim">
+                                        <label class="form-check-label">Sim</label>
+                                    </div>
+                                    <br>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="carteira" value="Não">
+                                        <label class="form-check-label"> Não</label>
+                                    </div>
+                                    <br>
+                                </label>
+                                <br>
+                                <br>
+                                <label>
+                                    <h6>O que faz para ganhar dinheiro?</h6>
+
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="ganhar"
+                                            value="Construção civi">
+                                        <label class="form-check-label">Construção civi</label>
+                                    </div>
+                                    <br>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="ganhar"
+                                            value="Serviços gerais/limpeza">
+                                        <label class="form-check-label">Serviços gerais/limpeza</label>
+                                    </div>
+                                    <br>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="ganhar"
+                                            value="Guardador de carro/flanelinha">
+                                        <label class="form-check-label">Guardador de carro/flanelinha</label>
+                                    </div>
+                                    <br>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="ganhar"
+                                            value="Pede dinheiro">
+                                        <label class="form-check-label">Pede dinheiro</label>
+                                    </div>
+                                    <br>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="ganhar"
+                                            value="Carregador/estivador">
+                                        <label class="form-check-label">Carregador/estivador</label>
+                                    </div>
+                                    <br>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="ganhar"
+                                            value="Catador de material reciclável">
+                                        <label class="form-check-label">Catador de material reciclável</label>
+                                    </div>
+                                    <br>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="ganhar" value="Outro">
+                                        <label class="form-check-label">Outro</label>
+                                    </div>
+                                    <br>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="ganhar"
+                                            value="Não respondeu">
+                                        <label class="form-check-label">Não respondeu</label>
+                                    </div>
+                                    <br>
+                                </label>
+                                <br>
+                                <br>
+
+                                <label>
+                                    <h6>Recebe algum benefício ou está inserido em algum Programa de Renda?</h6>
+
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="beneficio" value="Sim">
+                                        <label cla>Sim</label>
+
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="beneficio" value="Não">
+                                            <label cla>Não</label>
+                                        </div>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <label>Qual:
+                                            <input type="text" class="form-control" name="qual"
+                                                aria-describedby="basic-addon1">
+                                        </label>
+                                    </div>
+                                    <br>
+                                </label>
+                                <br>
+                                <br>
+                                <div>
+                                    <h5 style="text-align: left;"> Encaminhamento para Serviços e/ou fornecimento:</h5>
+
+                                    <div class="input-group mb-3">
+                                        <label>Data:
+                                            <input type="date" class="form-control" aria-label="Username" name="data1"
+                                                aria-describedby="basic-addon1">
+                                        </label>
+                                        <br>
+
+                                        <label>Serviço/ou fornecimento:
+                                            <input type="text" class="form-control" placeholder="Exemplo"
+                                                aria-label="Username" name="serv1" aria-describedby="basic-addon1">
+                                        </label>
+                                    </div>
+                                </div>
+                                <br>
+                                <div>
+                                    <h5 style="text-align: left;"> Encaminhamento para Serviços e/ou fornecimento:</h5>
+
+                                    <div class="input-group mb-3">
+                                        <label>Data:
+                                            <input type="date" class="form-control" aria-label="Username" name="data2"
+                                                aria-describedby="basic-addon1">
+                                        </label>
+                                        <br>
+
+                                        <label>Serviço/ou fornecimento:
+                                            <input type="text" class="form-control" placeholder="Exemplo"
+                                                aria-label="Username" name="serv2" aria-describedby="basic-addon1">
+                                        </label>
+                                    </div>
+                                </div>
+                                <div>
+                                    <h5 style="text-align: left;"> Encaminhamento para Serviços e/ou fornecimento:</h5>
+
+                                    <div class="input-group mb-3">
+                                        <label>Data:
+                                            <input type="date" class="form-control" aria-label="Username" name="data3"
+                                                aria-describedby="basic-addon1">
+                                        </label>
+                                        <br>
+
+                                        <label>Serviço/ou fornecimento:
+                                            <input type="text" class="form-control" placeholder="Exemplo"
+                                                aria-label="Username" name="serv3" aria-describedby="basic-addon1">
+                                        </label>
+                                    </div>
+                                </div>
+                                <div>
+                                    <h5 style="text-align: left;"> Encaminhamento para Serviços e/ou fornecimento:</h5>
+
+                                    <div class="input-group mb-3">
+                                        <label>Data:
+                                            <input type="date" class="form-control" aria-label="Username" name="data4"
+                                                aria-describedby="basic-addon1">
+                                        </label>
+                                        <br>
+
+                                        <label>Serviço/ou fornecimento:
+                                            <input type="text" class="form-control" placeholder="Exemplo"
+                                                aria-label="Username" name="serv4" aria-describedby="basic-addon1">
+                                        </label>
+                                    </div>
+                                </div>
+                                <div>
+                                    <h5 style="text-align: left;"> Encaminhamento para Serviços e/ou fornecimento:</h5>
+
+                                    <div class="input-group mb-3">
+                                        <label>Data:
+                                            <input type="date" class="form-control" aria-label="Username" name="data5"
+                                                aria-describedby="basic-addon1">
+                                        </label>
+                                        <br>
+
+                                        <label>Serviço/ou fornecimento:
+                                            <input type="text" class="form-control" placeholder="Exemplo"
+                                                aria-label="Username" name="serv5" aria-describedby="basic-addon1">
+                                        </label>
+                                    </div>
+                                </div>
+                                <!-- Fim do formulário -->
+
+                                <!-- Código referente ao "Snackbar" que aparece como confirmação de algum tipo de ação no site -->
+                                <div class="col-auto">
+                                    <button id="registroCadastro" style="background-color: blue;" type="submit"
+                                        class="btn btn-primary bnt" data-bs-dismiss="modal">Enviar</button>
+                                </div>
+                            </div>
+
+                        </form>
+
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="snackbar">Registro enviado com sucesso!</div>
+
+        <!-- Fim do código do modal para o cadastro de assistidos -->
+
+
+        <!-- Código que indica a Volta para a página inicial do Acesso Restrito -->
+
+        <div class="container-fluid">
+            <a href="AcessoRestrito.html">
+                <i style="font-size: 36px;" class="bi bi-arrow-left-circle-fill"></i>
+            </a>
+        </div>
+
+        <!-- Código para a página com a lista de assistidos -->
+        <div class="container-fluid">
+            <div class="col-12 col-md-10 my-4 mx-auto justify-content-center align-items-center d-flex p-2 flex-column">
+                <div class="mb-2 justify-content">
+                    <h1 class="text-center"> Controle de Assistidos </h1>
+                </div>
+
+                <div class="col-12 col-md-6">
+                    <div class="col-12 d-flex justify-content-around">
+                        <div class="col-5">
+                            <div class="input-group mb-3">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div>
+                        <center><button id="addac" type="submit" class="botaoquero"
+                                style="background-color:#FEEF10; border-radius: 30px;border:none; font-size: 20px; width: 50%;"
+                                class="col-md-6 border col-sm-11 mx-auto form-control my-2 btn btn-dark mt-2"
+                                data-bs-toggle="modal" data-bs-target="#modalAddAssistido">
+                                Adicionar Assistido
+                            </button></center>
+                        <br>
+                        <!-- Search box -->
+                        <div class="input-group row col-md-6 offset-3">
+                            <input style="height: 30px;" type="search" class="form-control rounded"
+                                placeholder="Procurar por apelido..." aria-label="Search"
+                                aria-describedby="search-addon" oninput="searchFilter()" id="searchFilter" />
+                        </div>
+                        <br>
+                    </div>
+
+                    <div class="m-2 col-12 col-md-11 mx-auto fs-3 d-flex align-items-center justify-content-center">
+                        <table class="table col-12" id="myTable">
+                            <thead>
+                                <tr>
+                                    <th class="fs-6"> id </th>
+                                    <th class="fs-6">Nome</th>
+                                    <th class="fs-6">Apelido</th>
+                                    <th class="fs-6">Documento</th>
+                                    <th class="fs-6">Data</th>
+                                </tr>
+                            </thead>
+
+                            <tbody id="main" class="listaLinhas">
+
+                            </tbody>
+
+                        </table>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+        <script>
+
+            $("#registroCadastro").on("click", function () {
+                var x = document.getElementById("snackbar");
+
+                x.className = "show";
+                setTimeout(function () { x.className = x.className.replace("show", ""); }, 3000);
+            });
+
+        </script>
+
+
+        <!-- Fim do código html e css da lista do site -->
+    </header>
+
+    <!-- reuso do footer -->
+    <div id="reusofooter">
+
+    </div>
+    <!-- script para o reuso -->
+    <script>
+        $(document).ready(function () {
+            $("#reusohead").load("reuso/head.html");
+            $("#reusonavbar").load("reuso/navbar.html");
+            $("#reusofooter").load("reuso/footer.html");
+        })
+    </script>
+
+    <!-- script para o funcionameto das listas e da integração via AJAX -->
+    <script>
+        // quando a página é carregada, as tuplas da tabela "tbCadastramento" são carregadas na div "resultado"
+        $(document).ready(() => {
+            assistidos.list();
+        });
+
+        // objeto que faz o get
+        var assistidos = {
+
+            list() {
+                $.ajax({
+                    url: 'http://127.0.0.1:1234/readCadastroAssistido',
+                    type: 'GET',
+                    success: data => {
+                        var tr = '';
+                        data.forEach(element => {
+                            tr += `<tr>`;
+                            tr += `<th scope="row"> ${element.idCadastro} </th>`;
+                            tr += `<th scope="row"> ${element.nome_completo} </th>`;
+                            tr += `<td scope="row"> ${element.clamado} </td>`
+                            tr += `<td scope="row"> ${element.possui_documentos} </td>`
+                            tr += `<td scope="row"> ${element.data} </td>`
+                            tr += `<td scope="row"><button style="background-color: red; color: white; border-radius:20px; border:none;" class="botaoquero" onclick="assistido.delete('${element.idCadastro}')"> Excluir </button> </td>`
+                            tr += `<td scope="row" data-bs-toggle="modal" data-bs-target="#myModal${element.idCadastro}"><button style="background-color: green; color: white; border-radius:20px; border:none;" class="botaoquero" onclick="assistidos.list2('${element.idCadastro}')"> Visualizar </button> </td>`
+                            tr += `<td scope="row"><button style="background-color: blue; color: white; border-radius:20px; border:none;" class="botaoquero" onclick="assistido.update('${element.idCadastro}')"> Atualizar </button> </td>`
+                            tr += `</tr>`
+                        });
+                        $('#main').html(tr);
+                    }
+                });
+            },
+
+
+            list2(id) {
+                $.ajax({
+                    url: 'http://127.0.0.1:1234/readCadastroAssistido',
+                    type: 'GET',
+                    success: data => {
+                        console.log("entrei no success");
+                        data.forEach(element => {
+                            console.log("entrei no forEach do elemento" + id);
+                            const modal = document.createElement("div");
+                            modal.innerHTML = `<div id="myModal${id}" class="modal fade" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true"> <div class="modal-dialog vis"> <div class="modal-content">
+                                 <div class="modal-header"> <h5 class="modal-title"> ${element.nome_completo}; id: ${element.idCadastro}</h5> <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> </div> 
+                                 <div class="modal-body"> <div class="row"> 
+                                    <div class="col-sm-4"> <h3> Identificação </h3> 
+                                        <label> Nome completo: ${element.nome_completo} </label> <br /> 
+                                        <label> Nome social: ${element.clamado} </label> <br /> 
+                                        <label> Documento: ${element.possui_documentos} </label> <br /> 
+                                        <label> Data de Nascimento: ${element.nascimento} </label> <br /> 
+
+                                        <h5> Motivo de estar na rua </h5>
+                                        <label> ${element.motivos_morar_rua}</label> <br />
+                                        <label> ${element.observacao} </label> <br />
+                                    </div> 
+                                    <div class="col-sm-4"> <h3> Locais </h3> 
+                                        <h5> Endereços </h5>
+                                        <label>  Marquis ou viaduto? <i> ${element.marquises_viadutos} </i> </label> <br />
+                                        <label>  Predios privados ou públicos? <i> ${element.predios_pri_pub} </i> </label> <br />
+                                        <label>  Parques ou praças? <i> ${element.parques} </i> </label> <br />
+                                        <label>  Estações de trem ou rodoviária? <i> ${element.estacao} </i> </label> <br />
+                                        <label>  Rodovia? <i> ${element.rodovias} </i> </label> <br />
+                                        <label>  Área interna ocupável? <i> ${element.areas_internas} </i> </label> <br />
+                                        <label>  Galeria subterrânea? <i> ${element.galerias} </i> </label> <br />
+                                        <label>  Lugar abandonado? <i> ${element.lugares_abandonados} </i> </label> <br />
+                                        <label>  Outro local? <i> ${element.outros_locais} </label> </i> <br />
+                                        <label>  Albergue, abrigo ou casa de passagem? <i> ${element.albergue} </i> </label> <br />
+                                        <label>  Domicílio particular? <i> ${element.domiciliar_particular} </i> </label> <br />
+
+                                        <h5> Número de dias na semana em cada lugar: </h5>
+                                        <label>  Rua: ${element.d_rua} vezes </label> <br />
+                                        <label>  Albergue: ${element.d_albergue} vezes </label> <br />
+                                        <label>  Domicílio particular: ${element.d_domicilio} vezes </label> <br />
+                                        <label>  Outro: ${element.d_outro} vezes </label> <br />
+
+                                        <h5> Tempos </h5>
+                                        <label>  Tempo de Rua: ${element.tempo_de_rua} </label> <br />
+                                        <label>  Tempo em São Paulo: ${element.quanto_tempo_mora_na_cidade} </label> <br />
+
+                                        </div>
+                                    <div class="col-sm-4"> <h3> Tratamento </h3>
+                                        <h5> Encaminhamento para <strong> ${element.encam_ser_1} </strong> </h5> <h5> dia ${element.encam_dt_1} </h5> <br />
+                                        <h5> Encaminhamento para <strong> ${element.encam_ser_2} </strong> </h5> <h5> dia ${element.encam_dt_2} </h5> <br />
+                                        <h5> Encaminhamento para <strong> ${element.encam_ser_3} </strong> </h5> <h5> dia ${element.encam_dt_3} </h5> <br />
+                                        <h5> Encaminhamento para <strong> ${element.encam_ser_4} </strong> </h5> <h5> dia ${element.encam_dt_4} </h5> <br />
+                                        <h5> Encaminhamento para <strong> ${element.encam_ser_5} </strong> </h5> <h5> dia ${element.encam_dt_5} </h5> <br />
+                                    </div> </div></div> <div class="modal-foorter"> 
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" aria-label="Close"> Fechar Visualização </button></div> </div></div></div>`;
+
+                            if (element.idCadastro == id) {
+                                document.body.appendChild(modal);
+                                $('#myModal' + id).modal();
+                            }
+
+                        });
+                        // $('#stefano').html(dive);
+                    }
+                });
+            }
+
+        };
+        // objeto que faz as outras ações
+        var assistido = {
+
+            delete(idCadastro) {
+
+                if (confirm(`Confirma a exclusão?`)) {
+                    $.ajax({
+                        type: 'POST',
+                        url: 'http://127.0.0.1:1234/deleteCadastroAssistido',
+                        data: { idCadastro: idCadastro },
+                    }).done(function () {
+                        assistidos.list();
+                    }).fail(function (msg) {
+                        console.log('FAIL');
+                    });
+                }
+            }
+
+        };
+
+
+        function searchFilter() {
+            var input, filter, table, tr, td, i, txtValue;
+            input = document.getElementById("searchFilter");
+            filter = input.value.toUpperCase();
+            table = document.getElementById("myTable");
+            tr = table.getElementsByTagName("tr");
+            for (i = 0; i < tr.length; i++) {
+                td = tr[i].getElementsByTagName("td")[0];
+                if (td) {
+                    txtValue = td.textContent || td.innerText;
+                    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                        tr[i].style.display = "";
+                    } else {
+                        tr[i].style.display = "none";
+                    }
+                }
+            }
+        }
+    </script>
+
+
+</body>
+
+</html>

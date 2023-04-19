@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <title> Login REVIRAR </title>
+  <link rel="shortcut icon" href="reuso/logo.ico" type="image/x-icon">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
+    integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+  <link rel="stylesheet" href="estilo/style.css">
+  <title>Login</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
+    integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</head>
+
+<body>
+  <section class="h-100 gradient-form" style="background-color: #FFFFFF;">
+    <div class="container py-5 h-100">
+      <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col-xl-10">
+          <div class="card rounded-3 text-black">
+            <div class="row g-0">
+              <div class="col-lg-6">
+                <a href="Home.html">
+                  <!-- Botão retroceder cinza -->
+                  <button type="button" class="btn btn-secondary" hre><svg xmlns="http://www.w3.org/2000/svg" width="20"
+                      height="20" fill="currentColor" class="bi bi-arrow-left" viewBox="0 0 16 16">
+                      <path fill-rule="evenodd"
+                        d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z" />
+                    </svg></button>
+                </a>
+                <div class="card-body p-md-5 mx-md-4">
+                  <div class="text-center">
+                    <img src="img/Logos/revirar_logo.jpeg" style="width: 185px;" alt="logo">
+                    <h4 class="mt-1 mb-5 pb-1"></h4>
+                  </div>
+                  <form>
+                    <p>Login</p>
+                    <div class="form-outline mb-4">
+                      <label class="form-label" for="">Usuário: </label>
+                      <input type="email" id="usuario" class="form-control" placeholder="Email" />
+                    </div>
+                    <div class="form-outline mb-4">
+                      <label class="form-label" for="">Senha: </label>
+                      <input type="password" id="senha" class="form-control" placeholder="Senha" />
+                    </div>
+                    <div class="text-center pt-1 mb-5 pb-1">
+                      <button onclick="Login()" class="btn btn-light px-5 py-2 primary-btn botaoquero" id="botaoLogin"
+                        style="font-size:20px; background-color: #FEEF10; border: none; border-radius: 30px;"
+                        type="button">Entrar</button>
+                      <a class="text-muted" href="#!">Esqueceu a senha?</a>
+                    </div>
+                  </form>
+                </div>
+              </div>
+              <div class="col-lg-6 d-flex align-items-center gradient-login">
+                <div class="text-white px-3 py-4 p-md-5 mx-md-4">
+                  <h4 class="mb-4" style="font-size: 27px; color: black;">Trazemos de volta a esperança de um céu mais azul.</h4>
+                  <p class="small mb-0" style="font-size: 16px;">A cada vida atendida, significa trazer de volta, um
+                    sorriso, um dom, um propósito, um ser humano. Assim como para nós, a empatia, a doação, a
+                    resiliência e o amor nós trazem o imensurável.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- função para verificar as credenciais  -->
+  <script>
+    function Login() {
+      var user = document.getElementById('usuario').value
+      var senha = document.getElementById('senha').value
+      console.log(user)
+      console.log(senha)
+      $.ajax({
+        url: 'http://localhost:1234/login',
+        type: 'POST',
+        data: {
+          user: user,
+          senha: senha
+        },
+        //método de sucesso das credenciais 
+        success: data => {
+          console.log(data)
+          window.location.href = '/AcessoRestrito.html'
+        }
+        //método de falha das credenciais 
+      }).fail(function (err) {
+        console.log(err)
+        alert('Credenciais inválidas')
+      })
+    }
+  </script>
+</body>
+
+</html>
